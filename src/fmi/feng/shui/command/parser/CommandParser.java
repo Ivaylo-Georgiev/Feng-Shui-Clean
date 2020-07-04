@@ -1,4 +1,4 @@
-package fmi.feng.shui.command;
+package fmi.feng.shui.command.parser;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +11,7 @@ public class CommandParser {
 	private final static int COMMAND_TYPE_INDEX = 0;
 	private final static int PARAMETERS_INDEX = 1;
 	private final static int FIRST_PARAMETER_INDEX = 0;
+	private final static int SECOND_PARAMETER_INDEX = 1;
 
 	private String commandType;
 	private List<String> commandParameters;
@@ -38,9 +39,14 @@ public class CommandParser {
 		return this.commandParameters;
 	}
 
-	public int getFirstCommandParameter() {
+	public String getFirstCommandParameter() {
 		String firstParameter = this.commandParameters.get(FIRST_PARAMETER_INDEX);
-		return Integer.parseInt(firstParameter);
+		return firstParameter;
+	}
+
+	public String getSecondCommandParameter() {
+		String secondsParameter = this.commandParameters.get(SECOND_PARAMETER_INDEX);
+		return secondsParameter;
 	}
 
 }
