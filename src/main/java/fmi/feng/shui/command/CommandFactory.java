@@ -11,10 +11,12 @@ import fmi.feng.shui.command.kua.KuaNumberCommand;
 import fmi.feng.shui.command.parser.CommandParser;
 import fmi.feng.shui.command.signs.ChineseHourSignCommand;
 import fmi.feng.shui.command.signs.ChineseYearSignCommand;
+import fmi.feng.shui.command.signs.SecretFriendCommand;
 import fmi.feng.shui.command.validation.ChineseHourSignParametersValidator;
 import fmi.feng.shui.command.validation.ChineseYearSignParametersValidator;
 import fmi.feng.shui.command.validation.CommandParametersValidator;
 import fmi.feng.shui.command.validation.KuaNumberParametersValidator;
+import fmi.feng.shui.command.validation.SecretFriendParametersValidator;
 
 public class CommandFactory {
 
@@ -33,6 +35,8 @@ public class CommandFactory {
 				return createChineseHourSign(commandParser, new ChineseHourSignParametersValidator(commandParameters));
 			case KUA_NUMBER:
 				return createKuaNumber(commandParser, new KuaNumberParametersValidator(commandParameters));
+			case SECRET_FRIEND:
+				return createSecretFriend(commandParser, new SecretFriendParametersValidator(commandParameters));
 			default:
 				throw new IllegalArgumentException();
 			}
@@ -89,6 +93,21 @@ public class CommandFactory {
 				int year = Integer.parseInt(commandParser.getFirstCommandParameter());
 				Gender gender = Gender.valueOf(commandParser.getSecondCommandParameter().toUpperCase());
 				return new KuaNumberCommand(year, gender);
+			}
+		}
+
+		return null;
+	}
+
+	SecretFriendCommand createSecretFriend(CommandParser commandParser,
+			CommandParametersValidator commandParametersValidator)
+			throws InvalidParametersCountException, InvalidParameterException {
+		boolean validParametersCount = commandParametersValidator.validateParametersCount();
+		if (validParametersCount) {
+			boolean validParameters = commandParametersValidator.validateParameters();
+			if (validParameters) {
+				int year = Integer.parseInt(commandParser.getFirstCommandParameter());
+				return new SecretFriendCommand(year);
 			}
 		}
 
