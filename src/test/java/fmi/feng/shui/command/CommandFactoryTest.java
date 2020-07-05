@@ -16,6 +16,7 @@ import fmi.feng.shui.command.exit.ExitCommand;
 import fmi.feng.shui.command.kua.Gender;
 import fmi.feng.shui.command.kua.KuaNumberCommand;
 import fmi.feng.shui.command.parser.CommandParser;
+import fmi.feng.shui.command.signs.AstrologyAlliesCommand;
 import fmi.feng.shui.command.signs.ChineseHourSignCommand;
 import fmi.feng.shui.command.signs.ChineseYearSignCommand;
 import fmi.feng.shui.command.signs.SecretFriendCommand;
@@ -114,6 +115,24 @@ public class CommandFactoryTest {
 		Mockito.verify(this.commandParser).getNormalizedCommandType();
 		Mockito.verify(this.commandParser).getCommandParameters();
 		Mockito.verify(commandFactory).createSecretFriend(Mockito.any(CommandParser.class),
+				Mockito.any(CommandParametersValidator.class));
+	}
+
+	@Test
+	public void test_should_trigger_creation_of_astrology_allies_command()
+			throws InvalidCommandTypeException, InvalidParametersCountException, InvalidParameterException {
+		final AstrologyAlliesCommand command = Mockito.mock(AstrologyAlliesCommand.class);
+
+		Mockito.doReturn(Command.ASTROLOGY_ALLIES.toString()).when(this.commandParser).getNormalizedCommandType();
+		Mockito.doReturn(Arrays.asList(YEAR)).when(this.commandParser).getCommandParameters();
+		Mockito.doReturn(command).when(commandFactory).createAstrologyAllies(Mockito.any(CommandParser.class),
+				Mockito.any(CommandParametersValidator.class));
+
+		commandFactory.getFengShuiCommand(this.commandParser);
+
+		Mockito.verify(this.commandParser).getNormalizedCommandType();
+		Mockito.verify(this.commandParser).getCommandParameters();
+		Mockito.verify(commandFactory).createAstrologyAllies(Mockito.any(CommandParser.class),
 				Mockito.any(CommandParametersValidator.class));
 	}
 
@@ -252,6 +271,38 @@ public class CommandFactoryTest {
 			throws InvalidParametersCountException, InvalidParameterException {
 		Mockito.doReturn(false).when(this.commandParametersValidator).validateParametersCount();
 		assertNull(commandFactory.createSecretFriend(this.commandParser, this.commandParametersValidator));
+		Mockito.verify(this.commandParametersValidator).validateParametersCount();
+	}
+
+	@Test
+	public void test_should_create_astrology_allies_command()
+			throws InvalidParametersCountException, InvalidParameterException {
+		Mockito.doReturn(true).when(this.commandParametersValidator).validateParametersCount();
+		Mockito.doReturn(true).when(this.commandParametersValidator).validateParameters();
+		Mockito.doReturn(YEAR).when(this.commandParser).getFirstCommandParameter();
+
+		assertNotNull(commandFactory.createAstrologyAllies(this.commandParser, this.commandParametersValidator));
+
+		Mockito.verify(this.commandParametersValidator).validateParametersCount();
+		Mockito.verify(this.commandParametersValidator).validateParameters();
+		Mockito.verify(this.commandParser).getFirstCommandParameter();
+	}
+
+	@Test
+	public void test_should_create_astrologyAllies_command_due_to_invalid_parameter()
+			throws InvalidParametersCountException, InvalidParameterException {
+		Mockito.doReturn(true).when(this.commandParametersValidator).validateParametersCount();
+		Mockito.doReturn(false).when(this.commandParametersValidator).validateParameters();
+		assertNull(commandFactory.createAstrologyAllies(this.commandParser, this.commandParametersValidator));
+		Mockito.verify(this.commandParametersValidator).validateParametersCount();
+		Mockito.verify(this.commandParametersValidator).validateParameters();
+	}
+
+	@Test
+	public void test_should_fail_to_create_astrologyAllies_command_due_to_invalid_parameters_count()
+			throws InvalidParametersCountException, InvalidParameterException {
+		Mockito.doReturn(false).when(this.commandParametersValidator).validateParametersCount();
+		assertNull(commandFactory.createAstrologyAllies(this.commandParser, this.commandParametersValidator));
 		Mockito.verify(this.commandParametersValidator).validateParametersCount();
 	}
 

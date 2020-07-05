@@ -5,7 +5,7 @@ import java.util.List;
 
 public enum Command {
 
-	EXIT, CHINESE_YEAR_SIGN, CHINESE_HOUR_SIGN, KUA_NUMBER, SECRET_FRIEND;
+	EXIT, CHINESE_YEAR_SIGN, CHINESE_HOUR_SIGN, KUA_NUMBER, SECRET_FRIEND, ASTROLOGY_ALLIES;
 
 	public static String getSupportedCommands() {
 		List<String> supportedCommands = new ArrayList<>();
