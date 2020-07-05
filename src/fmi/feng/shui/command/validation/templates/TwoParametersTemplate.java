@@ -4,9 +4,9 @@ import java.util.List;
 
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
 
-public class OneParameterTemplate {
+public class TwoParametersTemplate {
 
-	private final static int ALLOWED_PARAMETERS_COUNT = 1;
+	private final static int ALLOWED_PARAMETERS_COUNT = 2;
 
 	public boolean validateParametersCount(List<String> actualParameters) throws InvalidParametersCountException {
 		int parametersCount = actualParameters.size();

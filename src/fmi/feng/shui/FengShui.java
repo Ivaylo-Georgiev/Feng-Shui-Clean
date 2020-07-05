@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import fmi.feng.shui.command.CommandFactory;
-import fmi.feng.shui.command.ExitCommand;
 import fmi.feng.shui.command.FengShuiCommand;
 import fmi.feng.shui.command.exceptions.InvalidCommandTypeException;
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
+import fmi.feng.shui.command.exit.ExitCommand;
 
 public class FengShui {
 

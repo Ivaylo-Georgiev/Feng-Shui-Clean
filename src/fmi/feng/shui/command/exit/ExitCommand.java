@@ -1,4 +1,6 @@
-package fmi.feng.shui.command;
+package fmi.feng.shui.command.exit;
+
+import fmi.feng.shui.command.FengShuiCommand;
 
 public class ExitCommand implements FengShuiCommand {
 
