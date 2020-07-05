@@ -9,6 +9,7 @@ import fmi.feng.shui.command.exit.ExitCommand;
 import fmi.feng.shui.command.kua.Gender;
 import fmi.feng.shui.command.kua.KuaNumberCommand;
 import fmi.feng.shui.command.parser.CommandParser;
+import fmi.feng.shui.command.signs.AstrologyAlliesCommand;
 import fmi.feng.shui.command.signs.ChineseHourSignCommand;
 import fmi.feng.shui.command.signs.ChineseYearSignCommand;
 import fmi.feng.shui.command.signs.SecretFriendCommand;
@@ -37,6 +38,8 @@ public class CommandFactory {
 				return createKuaNumber(commandParser, new KuaNumberParametersValidator(commandParameters));
 			case SECRET_FRIEND:
 				return createSecretFriend(commandParser, new SecretFriendParametersValidator(commandParameters));
+			case ASTROLOGY_ALLIES:
+				return createAstrologyAllies(commandParser, new SecretFriendParametersValidator(commandParameters));
 			default:
 				throw new IllegalArgumentException();
 			}
@@ -108,6 +111,21 @@ public class CommandFactory {
 			if (validParameters) {
 				int year = Integer.parseInt(commandParser.getFirstCommandParameter());
 				return new SecretFriendCommand(year);
+			}
+		}
+
+		return null;
+	}
+
+	AstrologyAlliesCommand createAstrologyAllies(CommandParser commandParser,
+			CommandParametersValidator commandParametersValidator)
+			throws InvalidParametersCountException, InvalidParameterException {
+		boolean validParametersCount = commandParametersValidator.validateParametersCount();
+		if (validParametersCount) {
+			boolean validParameters = commandParametersValidator.validateParameters();
+			if (validParameters) {
+				int year = Integer.parseInt(commandParser.getFirstCommandParameter());
+				return new AstrologyAlliesCommand(year);
 			}
 		}
 
