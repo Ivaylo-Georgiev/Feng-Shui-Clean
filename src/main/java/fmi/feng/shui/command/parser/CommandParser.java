@@ -17,6 +17,7 @@ public class CommandParser {
 	private List<String> commandParameters;
 
 	public CommandParser(String rawCommand) {
+		rawCommand = rawCommand.strip();
 		String[] rawCommandElements = rawCommand.split(COMMAND_ELEMENTS_DELIMITER);
 		int rawCommandElementsCount = rawCommandElements.length;
 		this.commandType = rawCommandElements[COMMAND_TYPE_INDEX];

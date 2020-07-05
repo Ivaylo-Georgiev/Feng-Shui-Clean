@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class CommandTest {
 
-	private final static String SUPPORTED_COMMANDS = "EXIT,CHINESE_YEAR_SIGN,CHINESE_HOUR_SIGN,KUA_NUMBER";
+	private final static String SUPPORTED_COMMANDS = "EXIT,CHINESE_YEAR_SIGN,CHINESE_HOUR_SIGN,KUA_NUMBER,SECRET_FRIEND";
 
 	@Test
 	public void test_should_list_supported_commands() {

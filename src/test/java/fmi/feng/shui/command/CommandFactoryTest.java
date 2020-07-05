@@ -18,10 +18,8 @@ import fmi.feng.shui.command.kua.KuaNumberCommand;
 import fmi.feng.shui.command.parser.CommandParser;
 import fmi.feng.shui.command.signs.ChineseHourSignCommand;
 import fmi.feng.shui.command.signs.ChineseYearSignCommand;
-import fmi.feng.shui.command.validation.ChineseHourSignParametersValidator;
-import fmi.feng.shui.command.validation.ChineseYearSignParametersValidator;
+import fmi.feng.shui.command.signs.SecretFriendCommand;
 import fmi.feng.shui.command.validation.CommandParametersValidator;
-import fmi.feng.shui.command.validation.KuaNumberParametersValidator;
 
 public class CommandFactoryTest {
 
@@ -55,14 +53,14 @@ public class CommandFactoryTest {
 		Mockito.doReturn(Command.CHINESE_YEAR_SIGN.toString()).when(this.commandParser).getNormalizedCommandType();
 		Mockito.doReturn(Arrays.asList(YEAR)).when(this.commandParser).getCommandParameters();
 		Mockito.doReturn(command).when(commandFactory).createChineseYearSign(Mockito.any(CommandParser.class),
-				Mockito.any(ChineseYearSignParametersValidator.class));
+				Mockito.any(CommandParametersValidator.class));
 
 		commandFactory.getFengShuiCommand(this.commandParser);
 
 		Mockito.verify(this.commandParser).getNormalizedCommandType();
 		Mockito.verify(this.commandParser).getCommandParameters();
 		Mockito.verify(commandFactory).createChineseYearSign(Mockito.any(CommandParser.class),
-				Mockito.any(ChineseYearSignParametersValidator.class));
+				Mockito.any(CommandParametersValidator.class));
 	}
 
 	@Test
@@ -73,14 +71,14 @@ public class CommandFactoryTest {
 		Mockito.doReturn(Command.CHINESE_HOUR_SIGN.toString()).when(this.commandParser).getNormalizedCommandType();
 		Mockito.doReturn(Arrays.asList(HOUR)).when(this.commandParser).getCommandParameters();
 		Mockito.doReturn(command).when(commandFactory).createChineseHourSign(Mockito.any(CommandParser.class),
-				Mockito.any(ChineseHourSignParametersValidator.class));
+				Mockito.any(CommandParametersValidator.class));
 
 		commandFactory.getFengShuiCommand(this.commandParser);
 
 		Mockito.verify(this.commandParser).getNormalizedCommandType();
 		Mockito.verify(this.commandParser).getCommandParameters();
 		Mockito.verify(commandFactory).createChineseHourSign(Mockito.any(CommandParser.class),
-				Mockito.any(ChineseHourSignParametersValidator.class));
+				Mockito.any(CommandParametersValidator.class));
 	}
 
 	@Test
@@ -91,14 +89,32 @@ public class CommandFactoryTest {
 		Mockito.doReturn(Command.KUA_NUMBER.toString()).when(this.commandParser).getNormalizedCommandType();
 		Mockito.doReturn(Arrays.asList(YEAR, Gender.FEMALE.toString())).when(this.commandParser).getCommandParameters();
 		Mockito.doReturn(command).when(commandFactory).createKuaNumber(Mockito.any(CommandParser.class),
-				Mockito.any(KuaNumberParametersValidator.class));
+				Mockito.any(CommandParametersValidator.class));
 
 		commandFactory.getFengShuiCommand(this.commandParser);
 
 		Mockito.verify(this.commandParser).getNormalizedCommandType();
 		Mockito.verify(this.commandParser).getCommandParameters();
 		Mockito.verify(commandFactory).createKuaNumber(Mockito.any(CommandParser.class),
-				Mockito.any(KuaNumberParametersValidator.class));
+				Mockito.any(CommandParametersValidator.class));
+	}
+
+	@Test
+	public void test_should_trigger_creation_of_secret_friend_command()
+			throws InvalidCommandTypeException, InvalidParametersCountException, InvalidParameterException {
+		final SecretFriendCommand command = Mockito.mock(SecretFriendCommand.class);
+
+		Mockito.doReturn(Command.SECRET_FRIEND.toString()).when(this.commandParser).getNormalizedCommandType();
+		Mockito.doReturn(Arrays.asList(YEAR)).when(this.commandParser).getCommandParameters();
+		Mockito.doReturn(command).when(commandFactory).createSecretFriend(Mockito.any(CommandParser.class),
+				Mockito.any(CommandParametersValidator.class));
+
+		commandFactory.getFengShuiCommand(this.commandParser);
+
+		Mockito.verify(this.commandParser).getNormalizedCommandType();
+		Mockito.verify(this.commandParser).getCommandParameters();
+		Mockito.verify(commandFactory).createSecretFriend(Mockito.any(CommandParser.class),
+				Mockito.any(CommandParametersValidator.class));
 	}
 
 	@Test(expected = InvalidCommandTypeException.class)
@@ -204,6 +220,38 @@ public class CommandFactoryTest {
 			throws InvalidParametersCountException, InvalidParameterException {
 		Mockito.doReturn(false).when(this.commandParametersValidator).validateParametersCount();
 		assertNull(commandFactory.createKuaNumber(this.commandParser, this.commandParametersValidator));
+		Mockito.verify(this.commandParametersValidator).validateParametersCount();
+	}
+
+	@Test
+	public void test_should_create_secret_friend_command()
+			throws InvalidParametersCountException, InvalidParameterException {
+		Mockito.doReturn(true).when(this.commandParametersValidator).validateParametersCount();
+		Mockito.doReturn(true).when(this.commandParametersValidator).validateParameters();
+		Mockito.doReturn(YEAR).when(this.commandParser).getFirstCommandParameter();
+
+		assertNotNull(commandFactory.createSecretFriend(this.commandParser, this.commandParametersValidator));
+
+		Mockito.verify(this.commandParametersValidator).validateParametersCount();
+		Mockito.verify(this.commandParametersValidator).validateParameters();
+		Mockito.verify(this.commandParser).getFirstCommandParameter();
+	}
+
+	@Test
+	public void test_should_create_secret_friend_command_due_to_invalid_parameter()
+			throws InvalidParametersCountException, InvalidParameterException {
+		Mockito.doReturn(true).when(this.commandParametersValidator).validateParametersCount();
+		Mockito.doReturn(false).when(this.commandParametersValidator).validateParameters();
+		assertNull(commandFactory.createSecretFriend(this.commandParser, this.commandParametersValidator));
+		Mockito.verify(this.commandParametersValidator).validateParametersCount();
+		Mockito.verify(this.commandParametersValidator).validateParameters();
+	}
+
+	@Test
+	public void test_should_fail_to_create_secret_friend_command_due_to_invalid_parameters_count()
+			throws InvalidParametersCountException, InvalidParameterException {
+		Mockito.doReturn(false).when(this.commandParametersValidator).validateParametersCount();
+		assertNull(commandFactory.createSecretFriend(this.commandParser, this.commandParametersValidator));
 		Mockito.verify(this.commandParametersValidator).validateParametersCount();
 	}
 
