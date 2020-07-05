@@ -24,7 +24,11 @@ public class ChineseYearSignParametersValidator extends CommandParametersValidat
 	public boolean validateParameters() throws InvalidParameterException {
 		String parameter = parameters.get(PARAMATER_INDEX);
 		try {
-			Integer.parseInt(parameter);
+			int year = Integer.parseInt(parameter);
+			if (year < 0) {
+				throw new InvalidParameterException(
+						parameter + " is an invalid value for a year. Please, enter a positive integer");
+			}
 		} catch (NumberFormatException numberFormatException) {
 			throw new InvalidParameterException(
 					parameter + " is an invalid value for a year. Please, enter an integer");

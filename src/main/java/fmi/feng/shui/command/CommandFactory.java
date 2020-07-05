@@ -18,21 +18,21 @@ import fmi.feng.shui.command.validation.KuaNumberParametersValidator;
 
 public class CommandFactory {
 
-	public FengShuiCommand getFengShuiCommand(String rawCommand)
+	public FengShuiCommand getFengShuiCommand(CommandParser commandParser)
 			throws InvalidCommandTypeException, InvalidParametersCountException, InvalidParameterException {
-		CommandParser commandParser = new CommandParser(rawCommand);
 		String commandType = commandParser.getNormalizedCommandType();
+		List<String> commandParameters = commandParser.getCommandParameters();
 		try {
 			Command command = Command.valueOf(commandType);
 			switch (command) {
 			case EXIT:
 				return new ExitCommand();
 			case CHINESE_YEAR_SIGN:
-				return createChineseYearSign(commandParser);
+				return createChineseYearSign(commandParser, new ChineseYearSignParametersValidator(commandParameters));
 			case CHINESE_HOUR_SIGN:
-				return createChineseHourSign(commandParser);
+				return createChineseHourSign(commandParser, new ChineseHourSignParametersValidator(commandParameters));
 			case KUA_NUMBER:
-				return createKuaNumber(commandParser);
+				return createKuaNumber(commandParser, new KuaNumberParametersValidator(commandParameters));
 			default:
 				throw new IllegalArgumentException();
 			}
@@ -42,7 +42,7 @@ public class CommandFactory {
 		}
 	}
 
-	private String constructInvalidCommandErrorMessage(String commandType) {
+	String constructInvalidCommandErrorMessage(String commandType) {
 		StringBuilder errorMessageBuilder = new StringBuilder();
 		errorMessageBuilder.append(commandType);
 		errorMessageBuilder.append(" is an invalid command type. Valid commands are ");
@@ -50,10 +50,9 @@ public class CommandFactory {
 		return errorMessageBuilder.toString();
 	}
 
-	private ChineseYearSignCommand createChineseYearSign(CommandParser commandParser)
+	ChineseYearSignCommand createChineseYearSign(CommandParser commandParser,
+			CommandParametersValidator commandParametersValidator)
 			throws InvalidParametersCountException, InvalidParameterException {
-		List<String> parameters = commandParser.getCommandParameters();
-		CommandParametersValidator commandParametersValidator = new ChineseYearSignParametersValidator(parameters);
 		boolean validParametersCount = commandParametersValidator.validateParametersCount();
 		if (validParametersCount) {
 			boolean validParameters = commandParametersValidator.validateParameters();
@@ -66,10 +65,9 @@ public class CommandFactory {
 		return null;
 	}
 
-	private ChineseHourSignCommand createChineseHourSign(CommandParser commandParser)
+	ChineseHourSignCommand createChineseHourSign(CommandParser commandParser,
+			CommandParametersValidator commandParametersValidator)
 			throws InvalidParametersCountException, InvalidParameterException {
-		List<String> parameters = commandParser.getCommandParameters();
-		CommandParametersValidator commandParametersValidator = new ChineseHourSignParametersValidator(parameters);
 		boolean validParametersCount = commandParametersValidator.validateParametersCount();
 		if (validParametersCount) {
 			boolean validParameters = commandParametersValidator.validateParameters();
@@ -82,10 +80,8 @@ public class CommandFactory {
 		return null;
 	}
 
-	private KuaNumberCommand createKuaNumber(CommandParser commandParser)
+	KuaNumberCommand createKuaNumber(CommandParser commandParser, CommandParametersValidator commandParametersValidator)
 			throws InvalidParametersCountException, InvalidParameterException {
-		List<String> parameters = commandParser.getCommandParameters();
-		CommandParametersValidator commandParametersValidator = new KuaNumberParametersValidator(parameters);
 		boolean validParametersCount = commandParametersValidator.validateParametersCount();
 		if (validParametersCount) {
 			boolean validParameters = commandParametersValidator.validateParameters();

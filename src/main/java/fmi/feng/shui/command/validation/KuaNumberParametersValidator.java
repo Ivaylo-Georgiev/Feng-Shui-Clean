@@ -32,7 +32,11 @@ public class KuaNumberParametersValidator extends CommandParametersValidator {
 
 	private boolean validateYearParameter(String year) throws InvalidParameterException {
 		try {
-			Integer.parseInt(year);
+			int yearInt = Integer.parseInt(year);
+			if (yearInt < 0) {
+				throw new InvalidParameterException(
+						year + " is an invalid value for a year. Please, enter a positive integer");
+			}
 		} catch (NumberFormatException numberFormatException) {
 			throw new InvalidParameterException(year + " is an invalid value for a year. Please, enter an integer");
 		}
