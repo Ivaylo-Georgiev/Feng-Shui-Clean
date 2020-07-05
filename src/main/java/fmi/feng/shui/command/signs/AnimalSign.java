@@ -2,23 +2,19 @@ package fmi.feng.shui.command.signs;
 
 public enum AnimalSign {
 
-	RAT(4, 23, 1, "OX", "DRAGON,MONKEY"), OX(5, 1, 3, "RAT", "SNAKE,ROOSTER"), TIGER(6, 3, 5, "PIG", "HORSE,DOG"),
-	RABBIT(7, 5, 7, "DOG", "SHEEP,PIG"), DRAGON(8, 7, 9, "ROOSTER", "MONKEY,RAT"),
-	SNAKE(9, 9, 11, "MONKEY", "OX,ROOSTER"), HORSE(10, 11, 13, "SHEEP", "TIGER,DOG"),
-	SHEEP(11, 13, 15, "HORSE", "RABBIT,PIG"), MONKEY(0, 15, 17, "SNAKE", "DRAGON,RAT"),
-	ROOSTER(1, 17, 19, "DRAGON", "OX,SNAKE"), DOG(2, 19, 21, "RABBIT", "TIGER,HORSE"),
-	PIG(3, 21, 23, "TIGER", "RABBIT,SHEEP");
+	RAT(4, 23, "OX", "DRAGON,MONKEY"), OX(5, 1, "RAT", "SNAKE,ROOSTER"), TIGER(6, 3, "PIG", "HORSE,DOG"),
+	RABBIT(7, 5, "DOG", "SHEEP,PIG"), DRAGON(8, 7, "ROOSTER", "MONKEY,RAT"), SNAKE(9, 9, "MONKEY", "OX,ROOSTER"),
+	HORSE(10, 11, "SHEEP", "TIGER,DOG"), SHEEP(11, 13, "HORSE", "RABBIT,PIG"), MONKEY(0, 15, "SNAKE", "DRAGON,RAT"),
+	ROOSTER(1, 17, "DRAGON", "OX,SNAKE"), DOG(2, 19, "RABBIT", "TIGER,HORSE"), PIG(3, 21, "TIGER", "RABBIT,SHEEP");
 
 	private int yearModulo;
 	private int fromHour;
-	private int toHour;
 	private String secretFriend;
 	private String astrologyAllies;
 
-	private AnimalSign(int yearModulo, int fromHour, int toHour, String secretFriend, String astrologyAllies) {
+	private AnimalSign(int yearModulo, int fromHour, String secretFriend, String astrologyAllies) {
 		this.yearModulo = yearModulo;
 		this.fromHour = fromHour;
-		this.toHour = toHour;
 		this.secretFriend = secretFriend;
 		this.astrologyAllies = astrologyAllies;
 	}
@@ -36,8 +32,9 @@ public enum AnimalSign {
 	}
 
 	public static AnimalSign mapHourToSign(int hour) {
+		final int offset = 2;
 		for (AnimalSign sign : values()) {
-			if (hour >= sign.fromHour && hour < sign.toHour) {
+			if (hour >= sign.fromHour && hour < sign.fromHour + offset) {
 				return sign;
 			}
 		}
