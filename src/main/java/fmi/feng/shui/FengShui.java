@@ -10,6 +10,7 @@ import fmi.feng.shui.command.exceptions.InvalidCommandTypeException;
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
 import fmi.feng.shui.command.exit.ExitCommand;
+import fmi.feng.shui.command.parser.CommandParser;
 
 public class FengShui {
 
@@ -25,7 +26,8 @@ public class FengShui {
 				CommandFactory commandFactory = new CommandFactory();
 				System.out.print(COMMAND_PROMPT);
 				String userInput = commandReader.readLine();
-				FengShuiCommand fengShuiCommand = commandFactory.getFengShuiCommand(userInput);
+				CommandParser commandParser = new CommandParser(userInput);
+				FengShuiCommand fengShuiCommand = commandFactory.getFengShuiCommand(commandParser);
 				String result = fengShuiCommand.execute();
 				System.out.println(result);
 
