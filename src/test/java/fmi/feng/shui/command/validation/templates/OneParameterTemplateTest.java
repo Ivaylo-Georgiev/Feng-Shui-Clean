@@ -1,4 +1,4 @@
-package fmi.fenf.shui.command.validation.templates;
+package fmi.feng.shui.command.validation.templates;
 
 import static org.junit.Assert.assertTrue;
 
@@ -8,20 +8,20 @@ import java.util.Collections;
 import org.junit.Test;
 
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
-import fmi.feng.shui.command.validation.templates.TwoParametersTemplate;
+import fmi.feng.shui.command.validation.templates.OneParameterTemplate;
 
-public class TwoParametersTemplateTest {
+public class OneParameterTemplateTest {
 
 	private final static String PARAMETER = "parameter";
 
-	private TwoParametersTemplate template;
+	private OneParameterTemplate template;
 
-	public TwoParametersTemplateTest() {
-		template = new TwoParametersTemplate();
+	public OneParameterTemplateTest() {
+		this.template = new OneParameterTemplate();
 	}
 
-	@Test(expected = InvalidParametersCountException.class)
-	public void test_should_pass_one_parameter_and_validate_unsuccessfully() throws InvalidParametersCountException {
+	@Test
+	public void test_should_pass_one_parameter_and_validate_successfully() throws InvalidParametersCountException {
 		boolean isValid = template.validateParametersCount(Arrays.asList(PARAMETER));
 		assertTrue(isValid);
 	}
@@ -31,8 +31,8 @@ public class TwoParametersTemplateTest {
 		template.validateParametersCount(Collections.emptyList());
 	}
 
-	@Test
-	public void test_should_pass_two_parameters_and_validate_successfully() throws InvalidParametersCountException {
+	@Test(expected = InvalidParametersCountException.class)
+	public void test_should_pass_two_parameters_and_validate_unsuccessfully() throws InvalidParametersCountException {
 		template.validateParametersCount(Arrays.asList(PARAMETER, PARAMETER));
 	}
 
