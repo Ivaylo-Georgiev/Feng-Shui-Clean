@@ -3,9 +3,10 @@ package fmi.feng.shui.command.validation.helpers;
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 import fmi.feng.shui.command.kua.Gender;
 
-public class GenderParameterValidationHelper {
+public class GenderParameterValidationHelper implements ParameterTypeValidationHelper {
 
-	public boolean validateGenderParameter(String parameter) throws InvalidParameterException {
+	@Override
+	public boolean validateParameter(String parameter) throws InvalidParameterException {
 		try {
 			Gender.valueOf(parameter.toUpperCase());
 		} catch (IllegalArgumentException illegalArgumentException) {
