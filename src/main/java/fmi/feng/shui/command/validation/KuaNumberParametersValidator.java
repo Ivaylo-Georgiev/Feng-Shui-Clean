@@ -5,7 +5,7 @@ import java.util.List;
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
 import fmi.feng.shui.command.kua.Gender;
-import fmi.feng.shui.command.validation.templates.TwoParametersTemplate;
+import fmi.feng.shui.command.validation.helpers.TwoParametersValidationHelper;
 
 public class KuaNumberParametersValidator extends CommandParametersValidator {
 
@@ -18,7 +18,7 @@ public class KuaNumberParametersValidator extends CommandParametersValidator {
 
 	@Override
 	public boolean validateParametersCount() throws InvalidParametersCountException {
-		TwoParametersTemplate twoParametersTemplate = new TwoParametersTemplate();
+		TwoParametersValidationHelper twoParametersTemplate = new TwoParametersValidationHelper();
 		return twoParametersTemplate.validateParametersCount(parameters);
 	}
 
