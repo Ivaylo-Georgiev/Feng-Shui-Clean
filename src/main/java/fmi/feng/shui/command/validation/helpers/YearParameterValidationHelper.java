@@ -2,9 +2,10 @@ package fmi.feng.shui.command.validation.helpers;
 
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 
-public class YearParameterValidationHelper {
+public class YearParameterValidationHelper implements ParameterTypeValidationHelper {
 
-	public boolean validateYearParameter(String parameter) throws InvalidParameterException {
+	@Override
+	public boolean validateParameter(String parameter) throws InvalidParameterException {
 		try {
 			int year = Integer.parseInt(parameter);
 			if (isNegative(year)) {
