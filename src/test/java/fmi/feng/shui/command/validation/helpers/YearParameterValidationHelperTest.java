@@ -20,17 +20,17 @@ public class YearParameterValidationHelperTest {
 
 	@Test
 	public void test_should_verify_positive_year_validation() throws InvalidParameterException {
-		assertTrue(helper.validateYearParameter(POSITIVE_YEAR));
+		assertTrue(helper.validateParameter(POSITIVE_YEAR));
 	}
 
 	@Test(expected = InvalidParameterException.class)
 	public void test_should_verify_negative_year_validation() throws InvalidParameterException {
-		helper.validateYearParameter(NEGATIVE_YEAR);
+		helper.validateParameter(NEGATIVE_YEAR);
 	}
 
 	@Test(expected = InvalidParameterException.class)
 	public void test_should_verify_invalid_text_validation() throws InvalidParameterException {
-		helper.validateYearParameter(INVALID_TEXT);
+		helper.validateParameter(INVALID_TEXT);
 	}
-	
+
 }
