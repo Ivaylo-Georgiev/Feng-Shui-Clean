@@ -21,22 +21,22 @@ public class HourParameterValidationHelperTest {
 
 	@Test
 	public void test_should_verify_positive_hour_validation() throws InvalidParameterException {
-		assertTrue(helper.validateHourParameter(VALID_HOUR));
+		assertTrue(helper.validateParameter(VALID_HOUR));
 	}
 
 	@Test(expected = InvalidParameterException.class)
 	public void test_should_verify_large_hour_validation() throws InvalidParameterException {
-		helper.validateHourParameter(LARGE_HOUR);
+		helper.validateParameter(LARGE_HOUR);
 	}
 
 	@Test(expected = InvalidParameterException.class)
 	public void test_should_verify_negative_hour_validation() throws InvalidParameterException {
-		helper.validateHourParameter(NEGATIVE_HOUR);
+		helper.validateParameter(NEGATIVE_HOUR);
 	}
 
 	@Test(expected = InvalidParameterException.class)
 	public void test_should_verify_invalid_text_validation() throws InvalidParameterException {
-		helper.validateHourParameter(INVALID_TEXT);
+		helper.validateParameter(INVALID_TEXT);
 	}
 
 }
