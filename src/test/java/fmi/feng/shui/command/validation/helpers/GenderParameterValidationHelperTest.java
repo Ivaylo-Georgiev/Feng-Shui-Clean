@@ -20,17 +20,17 @@ public class GenderParameterValidationHelperTest {
 
 	@Test
 	public void test_should_verify_male_gender_validation() throws InvalidParameterException {
-		assertTrue(helper.validateGenderParameter(MALE_GENDER));
+		assertTrue(helper.validateParameter(MALE_GENDER));
 	}
 
 	@Test
 	public void test_should_verify_female_gender_validation() throws InvalidParameterException {
-		assertTrue(helper.validateGenderParameter(FEMALE_GENDER));
+		assertTrue(helper.validateParameter(FEMALE_GENDER));
 	}
 
 	@Test(expected = InvalidParameterException.class)
 	public void test_should_verify_invalid_text_validation() throws InvalidParameterException {
-		assertTrue(helper.validateGenderParameter(INVALID_TEXT));
+		assertTrue(helper.validateParameter(INVALID_TEXT));
 	}
 
 }
