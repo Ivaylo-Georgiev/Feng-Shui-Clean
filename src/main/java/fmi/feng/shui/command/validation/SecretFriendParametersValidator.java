@@ -4,7 +4,7 @@ import java.util.List;
 
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
-import fmi.feng.shui.command.validation.templates.OneParameterTemplate;
+import fmi.feng.shui.command.validation.helpers.OneParameterValidationHelper;
 
 public class SecretFriendParametersValidator extends CommandParametersValidator {
 
@@ -16,7 +16,7 @@ public class SecretFriendParametersValidator extends CommandParametersValidator 
 
 	@Override
 	public boolean validateParametersCount() throws InvalidParametersCountException {
-		OneParameterTemplate oneParameterTemplate = new OneParameterTemplate();
+		OneParameterValidationHelper oneParameterTemplate = new OneParameterValidationHelper();
 		return oneParameterTemplate.validateParametersCount(parameters);
 	}
 
