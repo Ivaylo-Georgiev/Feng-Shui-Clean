@@ -5,6 +5,7 @@ import java.util.List;
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
 import fmi.feng.shui.command.validation.helpers.OneParameterValidationHelper;
+import fmi.feng.shui.command.validation.helpers.YearParameterValidationHelper;
 
 public class AstrologyAlliesParametersValidator extends CommandParametersValidator {
 
@@ -23,18 +24,8 @@ public class AstrologyAlliesParametersValidator extends CommandParametersValidat
 	@Override
 	public boolean validateParameters() throws InvalidParameterException {
 		String parameter = parameters.get(PARAMATER_INDEX);
-		try {
-			int year = Integer.parseInt(parameter);
-			if (year < 0) {
-				throw new InvalidParameterException(
-						parameter + " is an invalid value for a year. Please, enter a positive integer");
-			}
-		} catch (NumberFormatException numberFormatException) {
-			throw new InvalidParameterException(
-					parameter + " is an invalid value for a year. Please, enter an integer");
-		}
-
-		return true;
+		YearParameterValidationHelper yearValidationHelper = new YearParameterValidationHelper();
+		return yearValidationHelper.validateYearParameter(parameter);
 	}
 
 }
