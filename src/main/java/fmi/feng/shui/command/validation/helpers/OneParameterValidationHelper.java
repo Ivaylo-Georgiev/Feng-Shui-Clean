@@ -1,10 +1,10 @@
-package fmi.feng.shui.command.validation.templates;
+package fmi.feng.shui.command.validation.helpers;
 
 import java.util.List;
 
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
 
-public class OneParameterTemplate {
+public class OneParameterValidationHelper {
 
 	private final static int ALLOWED_PARAMETERS_COUNT = 1;
 
