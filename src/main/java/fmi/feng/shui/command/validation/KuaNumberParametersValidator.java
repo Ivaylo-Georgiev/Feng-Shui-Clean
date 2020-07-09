@@ -4,8 +4,9 @@ import java.util.List;
 
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
-import fmi.feng.shui.command.kua.Gender;
+import fmi.feng.shui.command.validation.helpers.GenderParameterValidationHelper;
 import fmi.feng.shui.command.validation.helpers.TwoParametersValidationHelper;
+import fmi.feng.shui.command.validation.helpers.YearParameterValidationHelper;
 
 public class KuaNumberParametersValidator extends CommandParametersValidator {
 
@@ -24,35 +25,14 @@ public class KuaNumberParametersValidator extends CommandParametersValidator {
 
 	@Override
 	public boolean validateParameters() throws InvalidParameterException {
-		if (validateYearParameter(parameters.get(YEAR_PARAMETER_INDEX))) {
-			return validateGenderParameter(parameters.get(GENDER_PARAMETER_INDEX));
+		String yearParameter = parameters.get(YEAR_PARAMETER_INDEX);
+		YearParameterValidationHelper yearValidationHelper = new YearParameterValidationHelper();
+		if (yearValidationHelper.validateYearParameter(yearParameter)) {
+			String genderParameter = parameters.get(GENDER_PARAMETER_INDEX);
+			GenderParameterValidationHelper genderValidationHelper = new GenderParameterValidationHelper();
+			return genderValidationHelper.validateGenderParameter(genderParameter);
 		}
 		return false;
-	}
-
-	private boolean validateYearParameter(String year) throws InvalidParameterException {
-		try {
-			int yearInt = Integer.parseInt(year);
-			if (yearInt < 0) {
-				throw new InvalidParameterException(
-						year + " is an invalid value for a year. Please, enter a positive integer");
-			}
-		} catch (NumberFormatException numberFormatException) {
-			throw new InvalidParameterException(year + " is an invalid value for a year. Please, enter an integer");
-		}
-
-		return true;
-	}
-
-	private boolean validateGenderParameter(String gender) throws InvalidParameterException {
-		try {
-			Gender.valueOf(gender.toUpperCase());
-		} catch (IllegalArgumentException illegalArgumentException) {
-			throw new InvalidParameterException(
-					gender + " is an invalid value for a gender. Please, enter either 'male' or 'female'");
-		}
-
-		return true;
 	}
 
 }
