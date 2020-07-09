@@ -5,27 +5,34 @@ import java.util.List;
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
 import fmi.feng.shui.command.validation.helpers.OneParameterValidationHelper;
+import fmi.feng.shui.command.validation.helpers.ParameterTypeValidationHelper;
+import fmi.feng.shui.command.validation.helpers.ParametersCountValidationHelper;
 import fmi.feng.shui.command.validation.helpers.YearParameterValidationHelper;
 
 public class ChineseYearSignParametersValidator extends CommandParametersValidator {
 
 	private final static int PARAMATER_INDEX = 0;
 
+	private ParametersCountValidationHelper parametersCountValidationHelper;
+	private ParameterTypeValidationHelper yearValidationHelper;
+
 	public ChineseYearSignParametersValidator(List<String> parameters) {
 		super(parameters);
+		this.parametersCountValidationHelper = new OneParameterValidationHelper();
+		this.yearValidationHelper = new YearParameterValidationHelper();
 	}
 
 	@Override
 	public boolean validateParametersCount() throws InvalidParametersCountException {
-		OneParameterValidationHelper oneParameterTemplate = new OneParameterValidationHelper();
-		return oneParameterTemplate.validateParametersCount(parameters);
+		boolean isParametersCountValid = parametersCountValidationHelper.validateParametersCount(parameters);
+		return isParametersCountValid;
 	}
 
 	@Override
 	public boolean validateParameters() throws InvalidParameterException {
 		String parameter = parameters.get(PARAMATER_INDEX);
-		YearParameterValidationHelper yearValidationHelper = new YearParameterValidationHelper();
-		return yearValidationHelper.validateYearParameter(parameter);
+		boolean isYearParameterValid = yearValidationHelper.validateParameter(parameter);
+		return isYearParameterValid;
 	}
 
 }
