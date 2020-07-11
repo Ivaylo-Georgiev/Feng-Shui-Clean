@@ -1,13 +1,14 @@
-package fmi.feng.shui.command.validation.templates;
+package fmi.feng.shui.command.validation.helpers;
 
 import java.util.List;
 
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
 
-public class OneParameterTemplate {
+public class TwoParametersValidationHelper implements ParametersCountValidationHelper {
 
-	private final static int ALLOWED_PARAMETERS_COUNT = 1;
+	private final static int ALLOWED_PARAMETERS_COUNT = 2;
 
+	@Override
 	public boolean validateParametersCount(List<String> actualParameters) throws InvalidParametersCountException {
 		int parametersCount = actualParameters.size();
 		if (parametersCount != ALLOWED_PARAMETERS_COUNT) {
