@@ -41,7 +41,7 @@ To find the astrology allies for a person, born in a particular year, use the co
 or   
 `ASTROLOGY_ALLIES <year>`  
 
-Read more about astrology allies (here)[https://www.fengshuiweb.co.uk/chineseanimalsecretfriends.htm]
+Read more about astrology allies [here](https://www.fengshuiweb.co.uk/chineseanimalsecretfriends.htm)
 
 ### Secret Friend Calculator
 
@@ -52,7 +52,7 @@ To find the secret friend for a person, born in a particular year, use the comma
 or   
 `SECRET_FRIEND <year>`  
 
-Read more about secret friends (here)[https://fengshuifor.me/chinese-horoscope/secret-friend-and-clash-animal]
+Read more about secret friends [here](https://fengshuifor.me/chinese-horoscope/secret-friend-and-clash-animal)
 
 ### KUA Number Calculator
 
@@ -63,4 +63,4 @@ To find the KUA number for a person, born in a particular year, use the command:
 or   
 `KUA_NUMBER <year> <gender>` 
 
-Read more about KUA number (here)[https://www.thespruce.com/what-is-a-feng-shui-kua-number-1275185]
+Read more about KUA number [here](https://www.thespruce.com/what-is-a-feng-shui-kua-number-1275185)
