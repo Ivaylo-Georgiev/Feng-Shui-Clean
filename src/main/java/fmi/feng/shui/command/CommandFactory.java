@@ -19,6 +19,12 @@ import fmi.feng.shui.command.validation.CommandParametersValidator;
 import fmi.feng.shui.command.validation.KuaNumberParametersValidator;
 import fmi.feng.shui.command.validation.SecretFriendParametersValidator;
 
+/**
+ * Instantiates the proper Feng Shui command type, given raw user input.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class CommandFactory {
 
 	public FengShuiCommand getFengShuiCommand(CommandParser commandParser)
