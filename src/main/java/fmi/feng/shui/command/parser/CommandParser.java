@@ -3,6 +3,14 @@ package fmi.feng.shui.command.parser;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Splits the raw user input into meaningful command groups, including command
+ * type and command parameters. Every command element can be fetched for
+ * validation purposes in the execution flow of the program.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class CommandParser {
 
 	private final static String COMMAND_ELEMENTS_DELIMITER = " ";
