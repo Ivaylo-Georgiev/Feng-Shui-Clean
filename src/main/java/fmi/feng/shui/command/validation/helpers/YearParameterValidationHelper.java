@@ -2,6 +2,13 @@ package fmi.feng.shui.command.validation.helpers;
 
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 
+/**
+ * Helps to validate a year parameter, passed to a Feng Shui command. A year
+ * parameter is considered valid, if it is a positive integer
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class YearParameterValidationHelper implements ParameterTypeValidationHelper {
 
 	@Override
