@@ -11,6 +11,14 @@ import fmi.feng.shui.command.exceptions.InvalidParameterException;
 @FunctionalInterface
 public interface ParameterTypeValidationHelper {
 
+	/**
+	 * Validates, that the user has correctly specified a parameter type
+	 * 
+	 * @throws InvalidParameterException If the parameter, specified by the user is
+	 *                                   correct
+	 * @param parameter The raw user input, corresponding to the hour
+	 * @return boolean true, if the user input is a valid parameter
+	 */
 	public boolean validateParameter(String parameter) throws InvalidParameterException;
 
 }
