@@ -10,12 +10,22 @@ import fmi.feng.shui.command.FengShuiCommand;
  */
 public class AstrologyAlliesCommand implements FengShuiCommand {
 
+	/**
+	 * Only one parameter is needed find the astrology allies of a person - the
+	 * birth year.
+	 */
 	private int year;
 
+	/**
+	 * Constructs an astrology allies Feng Shui command for a specified year
+	 */
 	public AstrologyAlliesCommand(int year) {
 		this.year = year;
 	}
 
+	/**
+	 * Find the astrology allies of a person, born in a specified year
+	 */
 	@Override
 	public String execute() {
 		ChineseYearSignCommand chineseYearSignCommand = new ChineseYearSignCommand(year);
