@@ -11,7 +11,7 @@ import fmi.feng.shui.command.FengShuiCommand;
 public class AstrologyAlliesCommand implements FengShuiCommand {
 
 	/**
-	 * Only one parameter is needed find the astrology allies of a person - the
+	 * Only one parameter is needed to find the astrology allies of a person - a
 	 * birth year.
 	 */
 	private int year;
