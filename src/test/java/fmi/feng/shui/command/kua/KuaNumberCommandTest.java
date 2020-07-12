@@ -16,25 +16,25 @@ public class KuaNumberCommandTest {
 	private final static String KUA_8 = "8";
 	private final static String KUA_9 = "9";
 
-	private final static int KUA_1_MALE_YEAR = 2017;
-	private final static int KUA_2_MALE_YEAR = 2016;
-	private final static int KUA_3_MALE_YEAR = 2015;
-	private final static int KUA_4_MALE_YEAR = 2014;
-	private final static int KUA_5_MALE_YEAR = 2013;
-	private final static int KUA_6_MALE_YEAR = 2012;
-	private final static int KUA_7_MALE_YEAR = 2011;
-	private final static int KUA_8_MALE_YEAR = 2010;
-	private final static int KUA_9_MALE_YEAR = 2009;
+	private final static int KUA_1_MALE_YEAR = 1982;
+	private final static int KUA_2_MALE_YEAR = 1981;
+	private final static int KUA_3_MALE_YEAR = 1980;
+	private final static int KUA_4_MALE_YEAR = 1979;
+	private final static int KUA_5_MALE_YEAR = 1978;
+	private final static int KUA_6_MALE_YEAR = 1977;
+	private final static int KUA_7_MALE_YEAR = 1976;
+	private final static int KUA_8_MALE_YEAR = 1975;
+	private final static int KUA_9_MALE_YEAR = 1974;
 
-	private final static int KUA_1_FEMALE_YEAR = 2004;
-	private final static int KUA_2_FEMALE_YEAR = 2005;
-	private final static int KUA_3_FEMALE_YEAR = 2006;
-	private final static int KUA_4_FEMALE_YEAR = 2007;
-	private final static int KUA_5_FEMALE_YEAR = 2008;
-	private final static int KUA_6_FEMALE_YEAR = 2009;
-	private final static int KUA_7_FEMALE_YEAR = 2010;
-	private final static int KUA_8_FEMALE_YEAR = 2011;
-	private final static int KUA_9_FEMALE_YEAR = 2012;
+	private final static int KUA_1_FEMALE_YEAR = 1978;
+	private final static int KUA_2_FEMALE_YEAR = 1979;
+	private final static int KUA_3_FEMALE_YEAR = 1980;
+	private final static int KUA_4_FEMALE_YEAR = 1981;
+	private final static int KUA_5_FEMALE_YEAR = 1982;
+	private final static int KUA_6_FEMALE_YEAR = 1983;
+	private final static int KUA_7_FEMALE_YEAR = 1984;
+	private final static int KUA_8_FEMALE_YEAR = 1985;
+	private final static int KUA_9_FEMALE_YEAR = 1986;
 
 	@Test
 	public void test_should_calculate_male_kua_1() {
