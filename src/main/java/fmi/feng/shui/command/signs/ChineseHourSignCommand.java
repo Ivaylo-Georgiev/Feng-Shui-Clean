@@ -26,6 +26,8 @@ public class ChineseHourSignCommand implements FengShuiCommand {
 
 	/**
 	 * Calculate the Chinese animal sign, corresponding to the specified hour
+	 * 
+	 * @return String The Chinese hour animal sign
 	 */
 	@Override
 	public String execute() {
