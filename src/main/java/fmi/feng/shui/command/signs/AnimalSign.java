@@ -1,5 +1,12 @@
 package fmi.feng.shui.command.signs;
 
+/**
+ * Stores information about the 12 Chinese zodiac animal signs, needed for the
+ * execution of numerous Feng Shui commands.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public enum AnimalSign {
 
 	RAT(4, 23, "OX", "DRAGON,MONKEY"), OX(5, 1, "RAT", "SNAKE,ROOSTER"), TIGER(6, 3, "PIG", "HORSE,DOG"),
