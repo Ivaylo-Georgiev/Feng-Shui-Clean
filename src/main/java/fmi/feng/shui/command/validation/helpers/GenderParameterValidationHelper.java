@@ -3,6 +3,12 @@ package fmi.feng.shui.command.validation.helpers;
 import fmi.feng.shui.command.exceptions.InvalidParameterException;
 import fmi.feng.shui.command.kua.Gender;
 
+/**
+ * Helps to validate a gender parameter, passed to a Feng Shui command.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class GenderParameterValidationHelper implements ParameterTypeValidationHelper {
 
 	@Override
