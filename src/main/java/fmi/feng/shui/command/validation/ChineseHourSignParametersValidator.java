@@ -9,6 +9,13 @@ import fmi.feng.shui.command.validation.helpers.OneParameterValidationHelper;
 import fmi.feng.shui.command.validation.helpers.ParameterTypeValidationHelper;
 import fmi.feng.shui.command.validation.helpers.ParametersCountValidationHelper;
 
+/**
+ * Validates the parameters, passed to the Feng Shui command, that calculates
+ * the Chinese animal sign, corresponding to an hour.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class ChineseHourSignParametersValidator extends CommandParametersValidator {
 
 	private final static int PARAMATER_INDEX = 0;
