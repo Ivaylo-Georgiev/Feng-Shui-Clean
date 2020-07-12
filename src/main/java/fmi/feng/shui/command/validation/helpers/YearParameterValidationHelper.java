@@ -11,6 +11,15 @@ import fmi.feng.shui.command.exceptions.InvalidParameterException;
  */
 public class YearParameterValidationHelper implements ParameterTypeValidationHelper {
 
+	/**
+	 * Validates, that the user has correctly specified the year parameter. Accepted
+	 * values are positive integers
+	 * 
+	 * @throws InvalidParameterException If the year parameter is not a positive
+	 *                                   integer
+	 * @param parameter The raw user input, corresponding to the year
+	 * @return boolean true, if the user input is a positive integer
+	 */
 	@Override
 	public boolean validateParameter(String parameter) throws InvalidParameterException {
 		try {
