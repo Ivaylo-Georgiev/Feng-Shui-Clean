@@ -2,6 +2,12 @@ package fmi.feng.shui.command.signs;
 
 import fmi.feng.shui.command.FengShuiCommand;
 
+/**
+ * A Feng Shui command, that finds the secret friend of a person.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class SecretFriendCommand implements FengShuiCommand {
 
 	private int year;
