@@ -11,6 +11,12 @@ import fmi.feng.shui.command.FengShuiCommand;
 public class KuaNumberCommand implements FengShuiCommand {
 
 	/**
+	 * To extract the last to digits of a number, it needs to be divided (modulo)
+	 * with 100
+	 */
+	private final static int LAST_TWO_DIGITS_DIVISOR = 100;
+
+	/**
 	 * Some schools of Feng Shui do not use the Kua Number 5
 	 */
 	private final static int KUA_FIVE = 5;
@@ -39,18 +45,18 @@ public class KuaNumberCommand implements FengShuiCommand {
 
 	/**
 	 * Two parameters are needed to calculate the KUA number of a person. The first
-	 * is birth year.
+	 * is the last to digits of the birth year.
 	 */
-	private int year;
+	private int yearLastTwoDigits;
 
 	/**
 	 * * Two parameters are needed to calculate the KUA number of a person. The
-	 * first is gender.
+	 * first is the gender.
 	 */
 	private Gender gender;
 
 	public KuaNumberCommand(int year, Gender gender) {
-		this.year = year;
+		this.yearLastTwoDigits = year % LAST_TWO_DIGITS_DIVISOR;
 		this.gender = gender;
 	}
 
@@ -74,7 +80,7 @@ public class KuaNumberCommand implements FengShuiCommand {
 	 * @return int The integer representation of the calculated KUA number
 	 */
 	private int calculateMaleKuaNumber() {
-		int reducedYear = reduceToSingleDigit(this.year);
+		int reducedYear = reduceToSingleDigit(this.yearLastTwoDigits);
 		int kuaNumber = MALE_KUA_MINUEND - reducedYear;
 		kuaNumber = reduceToSingleDigit(kuaNumber);
 		return (kuaNumber == KUA_FIVE) ? KUA_TWO : kuaNumber;
@@ -86,7 +92,7 @@ public class KuaNumberCommand implements FengShuiCommand {
 	 * @return int The integer representation of the calculated KUA number
 	 */
 	private int calculateFemaleKuaNumber() {
-		int reducedYear = reduceToSingleDigit(this.year);
+		int reducedYear = reduceToSingleDigit(this.yearLastTwoDigits);
 		int kuaNumber = FEMALE_KUA_ADDEND + reducedYear;
 		kuaNumber = reduceToSingleDigit(kuaNumber);
 		return (kuaNumber == KUA_FIVE) ? KUA_EIGHT : kuaNumber;
