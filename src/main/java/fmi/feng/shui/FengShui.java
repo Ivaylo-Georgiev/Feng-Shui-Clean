@@ -12,6 +12,13 @@ import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
 import fmi.feng.shui.command.exit.ExitCommand;
 import fmi.feng.shui.command.parser.CommandParser;
 
+/**
+ * Executes various commands, which provide knowledge about the cosmic
+ * relationships between people and their surroundings.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class FengShui {
 
 	private final static String COMMAND_PROMPT = "Enter your command here: \n> ";
