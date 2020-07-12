@@ -64,3 +64,9 @@ or
 `KUA_NUMBER <year> <gender>` 
 
 Read more about KUA number [here](https://www.thespruce.com/what-is-a-feng-shui-kua-number-1275185)
+
+### Exit
+To exit, use the command:  
+`EXIT`  
+or  
+`exit`  
