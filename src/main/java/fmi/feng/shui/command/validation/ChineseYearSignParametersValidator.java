@@ -9,6 +9,13 @@ import fmi.feng.shui.command.validation.helpers.ParameterTypeValidationHelper;
 import fmi.feng.shui.command.validation.helpers.ParametersCountValidationHelper;
 import fmi.feng.shui.command.validation.helpers.YearParameterValidationHelper;
 
+/**
+ * Validates the parameters, passed to the Feng Shui command, that calculates
+ * the Chinese animal sign, corresponding to a year.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class ChineseYearSignParametersValidator extends CommandParametersValidator {
 
 	private final static int PARAMATER_INDEX = 0;
