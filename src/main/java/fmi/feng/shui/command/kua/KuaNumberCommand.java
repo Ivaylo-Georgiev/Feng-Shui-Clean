@@ -55,6 +55,9 @@ public class KuaNumberCommand implements FengShuiCommand {
 	 */
 	private Gender gender;
 
+	/**
+	 * Constructs a KUA number Feng Shui command for a specified year and gender
+	 */
 	public KuaNumberCommand(int year, Gender gender) {
 		this.yearLastTwoDigits = year % LAST_TWO_DIGITS_DIVISOR;
 		this.gender = gender;
