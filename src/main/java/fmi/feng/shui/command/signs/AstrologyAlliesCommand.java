@@ -25,6 +25,8 @@ public class AstrologyAlliesCommand implements FengShuiCommand {
 
 	/**
 	 * Find the astrology allies of a person, born in a specified year
+	 * 
+	 * @return String The astrology allies
 	 */
 	@Override
 	public String execute() {
