@@ -2,6 +2,12 @@ package fmi.feng.shui.command.kua;
 
 import fmi.feng.shui.command.FengShuiCommand;
 
+/**
+ * A Feng Shui command, that calculates the KUA number of a person.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class KuaNumberCommand implements FengShuiCommand {
 
 	// Some schools of Feng Shui do not use the Kua Number 5
