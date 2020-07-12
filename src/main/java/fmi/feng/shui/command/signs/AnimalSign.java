@@ -71,7 +71,7 @@ public enum AnimalSign {
 	 * Maps the hour, provided by the user to an animal sign. Every hour can
 	 * possibly match to only one sign
 	 * 
-	 * @param year A positive integer, between 1 and 24, that corresponds to a
+	 * @param hour A positive integer, between 1 and 24, that corresponds to a
 	 *             Chinese animal sign
 	 * @return AnimalSign The animal sign, corresponding to the specified hour
 	 */
