@@ -18,23 +18,53 @@ import fmi.feng.shui.command.validation.helpers.ParametersCountValidationHelper;
  */
 public class ChineseHourSignParametersValidator extends CommandParametersValidator {
 
+	/**
+	 * The index of the one and only parameter, needed for the Chinese hour sign
+	 * Feng Shui command
+	 */
 	private final static int PARAMATER_INDEX = 0;
 
+	/**
+	 * Helps to validate that the right number of parameters is provided by the user
+	 */
 	private ParametersCountValidationHelper parametersCountValidationHelper;
+
+	/**
+	 * Helps to validate, that the year parameter is correct
+	 */
 	private ParameterTypeValidationHelper hourValidationHelper;
 
+	/**
+	 * Constructs a validator for the Chinese hour sign Feng Shui command with the
+	 * raw parameters, specified by the user
+	 */
 	public ChineseHourSignParametersValidator(List<String> parameters) {
 		super(parameters);
 		this.parametersCountValidationHelper = new OneParameterValidationHelper();
 		this.hourValidationHelper = new HourParameterValidationHelper();
 	}
 
+	/**
+	 * Verify that exactly one parameter is passed to the command
+	 * 
+	 * @throws InvalidParameterException If more or less than one parameter is
+	 *                                   passed to the command
+	 * @return boolean true, if only one parameter is passed to the command
+	 */
 	@Override
 	public boolean validateParametersCount() throws InvalidParametersCountException {
 		boolean isParametersCountValid = parametersCountValidationHelper.validateParametersCount(parameters);
 		return isParametersCountValid;
 	}
 
+	/**
+	 * Verify that the provided hour parameter is a positive integer, between 1 and
+	 * 24
+	 * 
+	 * @throws InvalidParameterException If the parameter, is not a positive integer
+	 *                                   between 1 and 24
+	 * @return boolean true, if the parameters are valid
+	 */
 	@Override
 	public boolean validateParameters() throws InvalidParameterException {
 		String parameter = parameters.get(PARAMATER_INDEX);
