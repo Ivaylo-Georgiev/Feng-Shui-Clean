@@ -4,6 +4,13 @@ import java.util.List;
 
 import fmi.feng.shui.command.exceptions.InvalidParametersCountException;
 
+/**
+ * Helps to validate, that exactly two parameters are passed to a Feng Shui
+ * command.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class TwoParametersValidationHelper implements ParametersCountValidationHelper {
 
 	private final static int ALLOWED_PARAMETERS_COUNT = 2;
