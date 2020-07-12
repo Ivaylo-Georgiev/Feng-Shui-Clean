@@ -10,6 +10,13 @@ import fmi.feng.shui.command.validation.helpers.ParametersCountValidationHelper;
 import fmi.feng.shui.command.validation.helpers.TwoParametersValidationHelper;
 import fmi.feng.shui.command.validation.helpers.YearParameterValidationHelper;
 
+/**
+ * Validates the parameters, passed to the Feng Shui command, that finds the KUA
+ * number of a person.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class KuaNumberParametersValidator extends CommandParametersValidator {
 
 	private final static int YEAR_PARAMETER_INDEX = 0;
