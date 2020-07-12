@@ -2,6 +2,12 @@ package fmi.feng.shui.command.signs;
 
 import fmi.feng.shui.command.FengShuiCommand;
 
+/**
+ * A Feng Shui command, that finds the astrology allies of a person.
+ * 
+ *
+ * @author Ivaylo Georgiev
+ */
 public class AstrologyAlliesCommand implements FengShuiCommand {
 
 	private int year;
