@@ -70,3 +70,5 @@ To exit, use the command:
 `EXIT`  
 or  
 `exit`  
+
+>Made with 🔥 for the Clean Code Course at FMI 2020
